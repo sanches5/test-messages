@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {NavLink, Route, Router, useHistory} from "react-router-dom";
+import TermsOfUse from "./pages/termsOfUse";
+import Main from "./pages/main";
 
 function App() {
+  const history = useHistory();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className={"links"}>
+            <NavLink className={"link"} to={"/"} exact activeStyle={{color:"pink"}}>main</NavLink>
+            <NavLink className={"link"} to={"/terms-of-use"} color={"black"} exact  activeStyle={{color:"pink"}}>messages</NavLink>
+        </div>
+      <Router history={history}>
+          <Route path={"/"} exact component={Main}/>
+          <Route path={"/terms-of-use"} exact component={TermsOfUse}/>
+      </Router>
     </div>
   );
 }

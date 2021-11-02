@@ -1,0 +1,51 @@
+.fieldMessage {
+    width: 90%;
+    max-width: 500px;
+    height: 220px;
+    resize: none;
+    border-radius: 20px;
+    outline: none;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.formMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.buttonSend {
+    margin: 20px;
+    height: 50px;
+    width: 150px;
+    border-radius: 8px;
+    background-color: rgba(66, 229, 6, 0.72);
+    border: 2px solid rgba(8, 93, 3, 0.4);
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.buttonSend:hover {
+    background-color: rgba(53, 224, 5, 0.72);
+    box-shadow: 0 0 12px rgba(17, 51, 4, 0.2);
+}
+
+.messages {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.error {
+    border: 2px solid rgba(93, 3, 3, 0.4);
+    background-color: rgba(225, 4, 4, 0.4);
+    font-size: 18px;
+    width: 100%;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 400px;
+    padding: 30px;
+    box-sizing: border-box;
+}

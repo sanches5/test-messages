@@ -7,9 +7,12 @@ function TermsOfUse() {
     const [value, setValue] = useState();
     const [messages, setMessages] = useState([]);
     const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true)
         get("/messages").then(response => {
+            setIsLoading(false)
             if (response.messages) {
                 setMessages([...response.messages])
             } else {
@@ -20,7 +23,9 @@ function TermsOfUse() {
 
     const handleSaveMessage = () => {
         if (value) {
+            setIsLoading(true)
             post("/message", {text: value}).then(response => {
+                setIsLoading(false)
                 if(response.message) {
                     setMessages([...messages, response.message])
                     setValue("")
@@ -32,7 +37,9 @@ function TermsOfUse() {
     }
 
     const handleDeleteMessage = (id) => {
+        setIsLoading(true)
         del("/message", {}, {id}).then(() => {
+            setIsLoading(false)
             setMessages(messages.filter(e => e.id !== id))
         })
     }
@@ -57,7 +64,7 @@ function TermsOfUse() {
             </div>
 
             {error ? <div className={"error"}>{error}</div> : null}
-
+            {isLoading && "Идёт загрузка..."}
             <div className={"messages"}>
                 {messages.length ? messages.map(message => {
                     return <Message
